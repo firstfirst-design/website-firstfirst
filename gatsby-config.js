@@ -4,7 +4,7 @@ require(`dotenv`).config({
 
 const {
   NODE_ENV,
-  URL: NETLIFY_SITE_URL = "https://www.example.com",
+  URL: NETLIFY_SITE_URL = "https://firstfirst.design/",
   DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
   CONTEXT: NETLIFY_ENV = NODE_ENV,
 } = process.env
@@ -15,9 +15,9 @@ module.exports = {
   flags: { PRESERVE_WEBPACK_CACHE: true },
 
   siteMetadata: {
-    title: "GATSBY V3 Starter",
+    title: "First First",
     description: "This is my starter template for Gatsby V3",
-    url: "www.starter.com",
+    url: "https://firstfirst.design/",
   },
 
   plugins: [
@@ -78,7 +78,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-preload-fonts`,
-    `gatsby-plugin-advanced-sitemap`,
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
