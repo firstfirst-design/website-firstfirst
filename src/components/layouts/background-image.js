@@ -9,8 +9,10 @@ const BackgroundImage = props => {
     <BgImage
       image={backgroundImage}
       alt={props.alt}
-      style={{ minWidth: 300, minHeight: 300 }}
-    />
+      style={{ minWidth: "100%", minHeight: "100%" }}
+    >
+      <div>{props.content}</div>
+    </BgImage>
   )
 }
 

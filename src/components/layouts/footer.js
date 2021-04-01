@@ -4,10 +4,13 @@ import styled from "styled-components"
 import BackgroundImage from "../layouts/background-image"
 
 const FooterStyle = styled.div`
-  height: 33vh;
+  height: 25vh;
+  color: white;
+`
+
+const FooterContentStyle = styled.div`
   display: flex;
   justify-content: space-between;
-  color: white;
 `
 
 const Footer = () => {
@@ -38,21 +41,30 @@ const Footer = () => {
   const footer = data.contentfulFooter
 
   return (
-    <BackgroundImage image={footer.Image} alt={footer.image.description}>
-      <FooterStyle>
-        <div
-          className="links"
-          dangerouslySetInnerHTML={{
-            __html: footer.socialMedia.childMarkdownRemark.html,
-          }}
-        />
+    <FooterStyle>
+      <BackgroundImage
+        image={footer.image}
+        alt={footer.image.description}
+        content={
+          <FooterContentStyle>
+            <div
+              className="links"
+              dangerouslySetInnerHTML={{
+                __html:
+                  data.contentfulFooter.socialMedia.childMarkdownRemark.html,
+              }}
+            />
 
-        <div className="copyright">
-          {new Date().getFullYear()}
-          {footer.text}
-        </div>
-      </FooterStyle>
-    </BackgroundImage>
+            <div className="copyright">
+              {new Date().getFullYear()}
+              {data.contentfulFooter.text}
+            </div>
+          </FooterContentStyle>
+        }
+      >
+        <div>Hello</div>
+      </BackgroundImage>
+    </FooterStyle>
   )
 }
 

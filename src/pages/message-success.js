@@ -5,8 +5,17 @@ import SEO from "../components/seo"
 import BackgroundImage from "../components/layouts/background-image"
 
 const MessageSuccessStyle = styled.div`
-  height: 200px;
-  width: 200px;
+  height: 100vh;
+`
+
+const MessageSuccessContentStyle = styled.div`
+  text-align: center;
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `
 
 export default function MessageSuccess({ data }) {
@@ -15,23 +24,24 @@ export default function MessageSuccess({ data }) {
   return (
     <div>
       <SEO
-        title="Home"
+        title="Message Success"
         description="This is the homepage for a gatsby website"
         image="https://placeimg.com/300/300"
         slug="/"
       />
-
-      <BackgroundImage
-        image={messageSuccess.image}
-        alt={messageSuccess.image.description}
-      />
-
       <MessageSuccessStyle>
-        <div
-          className="links"
-          dangerouslySetInnerHTML={{
-            __html: messageSuccess.text.childMarkdownRemark.html,
-          }}
+        <BackgroundImage
+          image={messageSuccess.image}
+          alt={messageSuccess.image.description}
+          content={
+            <MessageSuccessContentStyle>
+              <h1
+                dangerouslySetInnerHTML={{
+                  __html: messageSuccess.text.childMarkdownRemark.html,
+                }}
+              />
+            </MessageSuccessContentStyle>
+          }
         />
       </MessageSuccessStyle>
     </div>
