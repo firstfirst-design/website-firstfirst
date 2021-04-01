@@ -2,7 +2,14 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
+import styled from "styled-components"
 import MasonryGallery from "../components/layouts/masonry-gallery"
+
+const GalleryStyle = styled.div`
+  .image {
+    vertical-align: bottom;
+  }
+`
 
 export default function Gallery() {
   const data = useStaticQuery(graphql`
@@ -26,13 +33,14 @@ export default function Gallery() {
     }
   `)
   return (
-    <div>
+    <GalleryStyle>
       <MasonryGallery>
         {data.allContentfulProjects.nodes.map(gallery => {
           const images = getImage(gallery.image)
           return (
             <Link to={gallery.slug}>
               <GatsbyImage
+                className="image"
                 key={gallery.id}
                 image={images}
                 alt={gallery.image.description}
@@ -41,6 +49,6 @@ export default function Gallery() {
           )
         })}
       </MasonryGallery>
-    </div>
+    </GalleryStyle>
   )
 }

@@ -1,5 +1,11 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import styled from "styled-components"
+import { rhythm } from "../utils/typography"
+
+const WhatStyle = styled.div`
+  margin-bottom: ${rhythm(-1)};
+`
 
 export default function What() {
   const data = useStaticQuery(graphql`
@@ -27,7 +33,7 @@ export default function What() {
 
   const what = data.contentfulWhat
   return (
-    <div>
+    <WhatStyle>
       <h1>{what.title}</h1>
       <div
         className="product"
@@ -52,6 +58,6 @@ export default function What() {
             what.childContentfulWhatTextWebTextNode.childMarkdownRemark.html,
         }}
       />
-    </div>
+    </WhatStyle>
   )
 }

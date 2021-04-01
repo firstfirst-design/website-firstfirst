@@ -7,6 +7,10 @@ import { rhythm } from "../../utils/typography"
 const PageLayoutStyle = styled.div`
   margin-right: ${rhythm(2)};
 
+  h1 {
+    text-transform: uppercase;
+  }
+
   input,
   textarea {
     outline: none;

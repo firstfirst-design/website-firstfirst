@@ -2,6 +2,17 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
+import styled from "styled-components"
+
+const BlogPreviewStyle = styled.div`
+  .image {
+    vertical-align: bottom;
+    filter: grayscale(0);
+    :hover {
+      filter: grayscale(30%);
+    }
+  }
+`
 
 export default function BlogPreview() {
   const data = useStaticQuery(graphql`
@@ -34,7 +45,7 @@ export default function BlogPreview() {
   const blogPreview = data.allContentfulBlog.nodes
 
   return (
-    <div>
+    <BlogPreviewStyle>
       {blogPreview.map(blog => {
         const previewImage = getImage(blog.image)
         return (
@@ -49,7 +60,7 @@ export default function BlogPreview() {
             />
             <Link to="/blog">
               <GatsbyImage
-                key={previewImage.id}
+                className="image"
                 image={previewImage}
                 alt={previewImage.description}
               />
@@ -57,6 +68,6 @@ export default function BlogPreview() {
           </div>
         )
       })}
-    </div>
+    </BlogPreviewStyle>
   )
 }
