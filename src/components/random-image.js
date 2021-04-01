@@ -1,8 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
-import { getImage } from "gatsby-plugin-image"
-import { BgImage } from "gbimage-bridge"
+import BackgroundImage from "./layouts/background-image"
 
 const RandomImageStyle = styled.div`
   height: 200px;
@@ -29,15 +28,11 @@ const RandomImage = () => {
 
   const images = data.contentfulRandomImage.randomImages
   const randomizedImage = images[Math.floor(Math.random() * images.length)]
-  const randomImage = getImage(randomizedImage)
 
   return (
-    <BgImage
-      image={randomImage}
-      alt={data.contentfulRandomImage.randomImages.description}
-    >
-      <RandomImageStyle />
-    </BgImage>
+    <RandomImageStyle>
+      <BackgroundImage image={randomizedImage} alt={images.description} />
+    </RandomImageStyle>
   )
 }
 

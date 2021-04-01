@@ -1,14 +1,16 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
-import { getImage } from "gatsby-plugin-image"
-import { BgImage } from "gbimage-bridge"
+import BackgroundImage from "../layouts/background-image"
 
 const FooterStyle = styled.div`
-  height: 33vh;
+  height: 25vh;
+  color: white;
+`
+
+const FooterContentStyle = styled.div`
   display: flex;
   justify-content: space-between;
-  color: white;
 `
 
 const Footer = () => {
@@ -36,25 +38,33 @@ const Footer = () => {
     `
   )
 
-  const image = data.contentfulFooter.image
-  const footerImage = getImage(image)
+  const footer = data.contentfulFooter
 
   return (
-    <BgImage image={footerImage} alt={data.contentfulFooter.image.description}>
-      <FooterStyle>
-        <div
-          className="links"
-          dangerouslySetInnerHTML={{
-            __html: data.contentfulFooter.socialMedia.childMarkdownRemark.html,
-          }}
-        />
+    <FooterStyle>
+      <BackgroundImage
+        image={footer.image}
+        alt={footer.image.description}
+        content={
+          <FooterContentStyle>
+            <div
+              className="links"
+              dangerouslySetInnerHTML={{
+                __html:
+                  data.contentfulFooter.socialMedia.childMarkdownRemark.html,
+              }}
+            />
 
-        <div className="copyright">
-          {new Date().getFullYear()}
-          {data.contentfulFooter.text}
-        </div>
-      </FooterStyle>
-    </BgImage>
+            <div className="copyright">
+              {new Date().getFullYear()}
+              {data.contentfulFooter.text}
+            </div>
+          </FooterContentStyle>
+        }
+      >
+        <div>Hello</div>
+      </BackgroundImage>
+    </FooterStyle>
   )
 }
 
