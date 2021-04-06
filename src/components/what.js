@@ -4,7 +4,7 @@ import styled from "styled-components"
 import { rhythm } from "../utils/typography"
 
 const WhatStyle = styled.div`
-  margin-bottom: ${rhythm(-1)};
+  margin-bottom: ${rhythm(0)};
 `
 
 export default function What() {

@@ -18,6 +18,9 @@ module.exports = {
     title: "First First",
     description: "This is my starter template for Gatsby V3",
     url: "https://firstfirst.design/",
+    favicon: {
+      svg: `static/favicon.svg`,
+    },
   },
 
   plugins: [
@@ -58,7 +61,7 @@ module.exports = {
         background_color: `#f7f0eb`,
         theme_color: `#a2466c`,
         display: `standalone`,
-        icon: `static/favicon.ico`,
+        icon: `static/favicon.svg`,
       },
     },
 

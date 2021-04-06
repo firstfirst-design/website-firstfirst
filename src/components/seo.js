@@ -1,13 +1,12 @@
 import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import Helmet from "react-helmet"
 
 {
   /*MORE INFO: https://www.iamtimsmith.com/blog/creating-a-better-seo-component-for-gatsby */
 }
 
-const SEO = ({ title, description, image, slug }) => {
+const SEO = props => {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -15,51 +14,46 @@ const SEO = ({ title, description, image, slug }) => {
           title
           description
           url
+          favicon {
+            svg
+          }
         }
       }
     }
   `)
 
+  const siteMetadata = data.site.siteMetadata
+
   return (
     <Helmet
       htmlAttributes={{ lang: `en` }}
-      titleTemplate={`%s | ${data.site.siteMetadata.title}`}
+      titleTemplate={`%s | ${siteMetadata.title}`}
     >
-      <title>{title}</title>
+      <title>{props.title}</title>
       <meta
         name="description"
-        content={description || data.site.siteMetadata.description}
+        content={props.description || siteMetadata.description}
       />
-      <link rel="canonical" href={`${data.site.siteMetadata.siteUrl}${slug}`} />
-      {/*<link rel="shortcut icon" href={data.favicon.publicURL} />*/}
+      <link rel="canonical" href={`${siteMetadata.url}${props.slug}`} />
+      <link rel="shortcut icon" href={siteMetadata.favicon.svg} />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@iam_timsmith" />
-      <meta name="og:title" content={title} />
+      <meta name="twitter:site" content="@rudolf__hans" />
+      <meta name="og:title" content={props.title} />
       <meta
         name="og:description"
-        content={description || data.site.siteMetadata.description}
+        content={props.description || siteMetadata.description}
       />
-      {/*<meta
-        name="og:image"
-        content={`${data.site.siteMetadata.siteUrl}${
-          image || data.social.publicURL
-        }`}
-    />*/}
-      <meta name="og:type" content="website" />
       <meta
-        name="og:url"
-        content={`${data.site.siteMetadata.siteUrl}/${slug}`}
+        name="og:image"
+        content={`${siteMetadata.url}${
+          props.image || siteMetadata.favicon.svg
+        }`}
       />
-      <meta name="og:site_name" content={data.site.siteMetadata.title} />
+      <meta name="og:type" content="website" />
+      <meta name="og:url" content={`${siteMetadata.url}/${props.slug}`} />
+      <meta name="og:site_name" content={siteMetadata.title} />
     </Helmet>
   )
-}
-
-SEO.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  image: PropTypes.string,
-  slug: PropTypes.string,
 }
 
 export default SEO

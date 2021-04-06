@@ -1,13 +1,20 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { Link } from "gatsby"
 import styled from "styled-components"
+import { rhythm } from "../utils/typography"
 import PageLayout from "../components/layouts/page-layout"
+import SEO from "../components/seo"
 import MasonryGallery from "../components/layouts/masonry-gallery"
 
 const ProjectsStyle = styled.div`
   .image {
     vertical-align: bottom;
+  }
+
+  .text {
+    margin-bottom: ${rhythm(-1)};
   }
 `
 
@@ -17,6 +24,13 @@ export default function Projects({ data }) {
 
   return (
     <PageLayout>
+      <SEO
+        title={projects.title}
+        description={projects.description}
+        image={image}
+        slug={projects.slug}
+      />
+
       <ProjectsStyle>
         <h1>{projects.title}</h1>
         <div
@@ -27,7 +41,7 @@ export default function Projects({ data }) {
         />
         <GatsbyImage className="image" image={image} alt={image.description} />
         <div
-          className="body"
+          className="text"
           dangerouslySetInnerHTML={{
             __html: projects.text.childMarkdownRemark.html,
           }}
@@ -45,6 +59,14 @@ export default function Projects({ data }) {
             )
           })}
         </MasonryGallery>
+
+        {data.allContentfulProjects.nodes.map(projects => {
+          return (
+            <Link to={`/${projects.slug}`} key={projects.id}>
+              <h1>{projects.title}</h1>
+            </Link>
+          )
+        })}
       </ProjectsStyle>
     </PageLayout>
   )
@@ -85,6 +107,15 @@ export const projectsQuery = graphql`
           width: 1500
         )
         description
+      }
+      description
+      slug
+    }
+    allContentfulProjects {
+      nodes {
+        id
+        title
+        slug
       }
     }
   }
