@@ -18,6 +18,10 @@ const PageLayoutStyle = styled.div`
     border: none;
     border-bottom: 1px solid black;
   }
+
+  .active {
+    color: red;
+  }
 `
 
 export default function PageLayout({ children }) {

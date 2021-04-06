@@ -4,7 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import styled from "styled-components"
 
-const BlogPreviewStyle = styled.div`
+const BlogPostStyle = styled.div`
   .image {
     vertical-align: bottom;
     filter: grayscale(0);
@@ -14,10 +14,10 @@ const BlogPreviewStyle = styled.div`
   }
 `
 
-export default function BlogPreview() {
+export default function BlogPost() {
   const data = useStaticQuery(graphql`
-    query BlogPreviewQuery {
-      allContentfulBlog(sort: { fields: date, order: DESC }, limit: 1) {
+    query BlogPostQuery {
+      allContentfulBlogPost(sort: { fields: date, order: DESC }, limit: 1) {
         nodes {
           id
           title
@@ -42,32 +42,32 @@ export default function BlogPreview() {
     }
   `)
 
-  const blogPreview = data.allContentfulBlog.nodes
+  const blogPost = data.allContentfulBlogPost.nodes
 
   return (
-    <BlogPreviewStyle>
-      {blogPreview.map(blog => {
-        const previewImage = getImage(blog.image)
+    <BlogPostStyle>
+      {blogPost.map(post => {
+        const postImage = getImage(post.image)
         return (
-          <div key={blog.id}>
-            <h1>{blog.title}</h1>
-            <h1>{blog.date}</h1>
+          <div key={post.id}>
+            <h1>{post.title}</h1>
+            <h1>{post.date}</h1>
 
             <div
               dangerouslySetInnerHTML={{
-                __html: blog.text.childMarkdownRemark.excerpt,
+                __html: post.text.childMarkdownRemark.excerpt,
               }}
             />
             <Link to="/blog">
               <GatsbyImage
                 className="image"
-                image={previewImage}
-                alt={previewImage.description}
+                image={postImage}
+                alt={postImage.description}
               />
             </Link>
           </div>
         )
       })}
-    </BlogPreviewStyle>
+    </BlogPostStyle>
   )
 }

@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
-const Container = styled.div`
+const NavigationStyle = styled.div`
   position: fixed;
   right: 1.25rem;
   bottom: 0;
@@ -19,24 +19,39 @@ const Container = styled.div`
 export default function Navigation() {
   const data = useStaticQuery(graphql`
     query NavigationQuery {
+      contentfulWho {
+        title
+        slug
+      }
+      contentfulBlog {
+        title
+        slug
+      }
+      contentfulContact {
+        title
+        slug
+      }
       contentfulDisclaimer {
+        title
         slug
       }
     }
   `)
 
-  const disclaimer = data.contentfulDisclaimer.slug
-
   return (
-    <Container>
-      <Link to="/who-we-are">who we are</Link>
-      <Link to="/blog" id="blog">
-        blog
+    <NavigationStyle>
+      <Link to={`/${data.contentfulWho.slug}`} activeClassName="active">
+        {data.contentfulWho.title}
       </Link>
-      <Link to="/contact">contact</Link>
-      <Link to={`/${disclaimer}`} id={disclaimer}>
-        {disclaimer}
+      <Link to={`/${data.contentfulBlog.slug}`} activeClassName="active">
+        {data.contentfulBlog.title}
       </Link>
-    </Container>
+      <Link to={`/${data.contentfulContact.slug}`} activeClassName="active">
+        {data.contentfulContact.title}
+      </Link>
+      <Link to={`/${data.contentfulDisclaimer.slug}`} activeClassName="active">
+        {data.contentfulDisclaimer.title}
+      </Link>
+    </NavigationStyle>
   )
 }

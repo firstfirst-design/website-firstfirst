@@ -62,7 +62,11 @@ export default function Projects({ data }) {
 
         {data.allContentfulProjects.nodes.map(projects => {
           return (
-            <Link to={`/${projects.slug}`} key={projects.id}>
+            <Link
+              to={`/${projects.slug}`}
+              key={projects.id}
+              activeClassName="active"
+            >
               <h1>{projects.title}</h1>
             </Link>
           )

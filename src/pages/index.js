@@ -6,7 +6,7 @@ import IntroLogo from "../components/intro-logo"
 import RandomImage from "../components/random-image"
 import What from "../components/what"
 import Gallery from "../components/gallery"
-import BlogPreview from "../components/blog-preview"
+import BlogPost from "../components/blog-post"
 
 const HomeStyle = styled.div``
 
@@ -23,7 +23,7 @@ export default function Home() {
       <RandomImage />
       <What />
       <Gallery />
-      <BlogPreview />
+      <BlogPost />
     </PageLayout>
   )
 }
