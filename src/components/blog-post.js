@@ -62,7 +62,7 @@ export default function BlogPost() {
               <GatsbyImage
                 className="image"
                 image={postImage}
-                alt={postImage.description}
+                alt={post.image.description}
               />
             </Link>
           </div>

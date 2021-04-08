@@ -39,7 +39,11 @@ export default function Projects({ data }) {
             __html: projects.info.childMarkdownRemark.html,
           }}
         />
-        <GatsbyImage className="image" image={image} alt={image.description} />
+        <GatsbyImage
+          className="image"
+          image={image}
+          alt={projects.image.description}
+        />
         <div
           className="text"
           dangerouslySetInnerHTML={{

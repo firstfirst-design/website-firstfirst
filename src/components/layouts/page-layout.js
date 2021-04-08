@@ -1,15 +1,35 @@
 import React from "react"
 import Footer from "./footer"
-import Header from "./header"
+import Navigation from "./navigation"
 import styled from "styled-components"
 import { rhythm } from "../../utils/typography"
 
 const PageLayoutStyle = styled.div`
-  margin-right: ${rhythm(2)};
+  margin: ${rhythm(1 / 4)} ${rhythm(2)} ${rhythm(1 / 4)} ${rhythm(1 / 4)};
+
+  /*FONT*/
 
   h1 {
     text-transform: uppercase;
+    text-align: center;
   }
+
+  /*LINKS*/
+
+  a {
+    color: blue;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: red;
+  }
+
+  .active {
+    color: red;
+  }
+
+  /*FORM*/
 
   input,
   textarea {
@@ -18,16 +38,12 @@ const PageLayoutStyle = styled.div`
     border: none;
     border-bottom: 1px solid black;
   }
-
-  .active {
-    color: red;
-  }
 `
 
 export default function PageLayout({ children }) {
   return (
     <PageLayoutStyle>
-      <Header />
+      <Navigation />
       {children}
       <Footer />
     </PageLayoutStyle>

@@ -22,35 +22,35 @@ export default function MessageSuccess({ data }) {
   const messageSuccess = data.contentfulMessageSuccess
 
   return (
-    <div>
+    <MessageSuccessStyle>
       <SEO
-        title="Message Success"
-        description="This is the homepage for a gatsby website"
-        image="https://placeimg.com/300/300"
-        slug="/"
+        title={messageSuccess.title}
+        description={messageSuccess.description}
+        image={messageSuccess.image}
+        slug={messageSuccess.slug}
       />
-      <MessageSuccessStyle>
-        <BackgroundImage
-          image={messageSuccess.image}
-          alt={messageSuccess.image.description}
-          content={
-            <MessageSuccessContentStyle>
-              <h1
-                dangerouslySetInnerHTML={{
-                  __html: messageSuccess.text.childMarkdownRemark.html,
-                }}
-              />
-            </MessageSuccessContentStyle>
-          }
-        />
-      </MessageSuccessStyle>
-    </div>
+
+      <BackgroundImage
+        image={messageSuccess.image}
+        alt={messageSuccess.image.description}
+        content={
+          <MessageSuccessContentStyle>
+            <h1
+              dangerouslySetInnerHTML={{
+                __html: messageSuccess.text.childMarkdownRemark.html,
+              }}
+            />
+          </MessageSuccessContentStyle>
+        }
+      />
+    </MessageSuccessStyle>
   )
 }
 
 export const query = graphql`
   query MessageSuccessQuery {
     contentfulMessageSuccess {
+      title
       image {
         gatsbyImageData(
           layout: CONSTRAINED
@@ -65,6 +65,7 @@ export const query = graphql`
           html
         }
       }
+      description
       slug
     }
   }

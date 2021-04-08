@@ -1,4 +1,5 @@
 import React from "react"
+import { graphql } from "gatsby"
 import styled from "styled-components"
 import PageLayout from "../components/layouts/page-layout"
 import SEO from "../components/seo"
@@ -10,20 +11,39 @@ import BlogPost from "../components/blog-post"
 
 const HomeStyle = styled.div``
 
-export default function Home() {
+export default function Home({ data }) {
+  const home = data.contentfulHome
+
   return (
     <PageLayout>
-      <SEO
-        title="Home"
-        description="This is the homepage for a gatsby website"
-        image="https://placeimg.com/300/300"
-        slug="/"
-      />
-      <IntroLogo />
-      <RandomImage />
-      <What />
-      <Gallery />
-      <BlogPost />
+      <HomeStyle>
+        <SEO
+          title={home.title}
+          description={home.description}
+          image={home.image}
+          slug={home.slug}
+        />
+        <IntroLogo />
+        <RandomImage />
+        <What />
+        <Gallery />
+        <BlogPost />
+      </HomeStyle>
     </PageLayout>
   )
 }
+
+export const query = graphql`
+  query HomeQuery {
+    contentfulHome {
+      title
+      description
+      image {
+        fluid {
+          srcWebp
+        }
+      }
+      slug
+    }
+  }
+`

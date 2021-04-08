@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
-const NavigationStyle = styled.div`
+const NavigationStyle = styled.header`
   position: fixed;
   right: 1.25rem;
   bottom: 0;

@@ -31,7 +31,10 @@ const RandomImage = () => {
 
   return (
     <RandomImageStyle>
-      <BackgroundImage image={randomizedImage} alt={images.description} />
+      <BackgroundImage
+        image={randomizedImage}
+        alt={randomizedImage.description}
+      />
     </RandomImageStyle>
   )
 }

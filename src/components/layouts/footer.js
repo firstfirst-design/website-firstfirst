@@ -1,16 +1,36 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
+import { Link } from "gatsby"
 import BackgroundImage from "../layouts/background-image"
+import SocialMedia from "./social-media"
 
 const FooterStyle = styled.div`
-  height: 25vh;
+  height: 50vh;
   color: white;
-`
-
-const FooterContentStyle = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+
+  .topContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .bottomContainer {
+    text-align: center;
+  }
+
+  .logo {
+    width: 5rem;
+    filter: invert(8%) sepia(100%) saturate(7209%) hue-rotate(248deg)
+      brightness(94%) contrast(143%);
+  }
+
+  .logo:hover {
+    filter: invert(11%) sepia(99%) saturate(7436%) hue-rotate(360deg)
+      brightness(91%) contrast(122%);
+  }
 `
 
 const Footer = () => {
@@ -27,44 +47,47 @@ const Footer = () => {
             )
             description
           }
-          socialMedia {
-            childMarkdownRemark {
-              html
-            }
-          }
           text
+        }
+        contentfulAsset(title: { eq: "first-first-design-logo" }) {
+          title
+          file {
+            url
+          }
+          description
         }
       }
     `
   )
 
   const footer = data.contentfulFooter
+  const logo = data.contentfulAsset
 
   return (
-    <FooterStyle>
-      <BackgroundImage
-        image={footer.image}
-        alt={footer.image.description}
-        content={
-          <FooterContentStyle>
-            <div
-              className="links"
-              dangerouslySetInnerHTML={{
-                __html:
-                  data.contentfulFooter.socialMedia.childMarkdownRemark.html,
-              }}
-            />
-
-            <div className="copyright">
-              {new Date().getFullYear()}
-              {data.contentfulFooter.text}
-            </div>
-          </FooterContentStyle>
-        }
-      >
-        <div>Hello</div>
-      </BackgroundImage>
-    </FooterStyle>
+    <BackgroundImage
+      image={footer.image}
+      alt={footer.image.description}
+      content={
+        <FooterStyle>
+          <div className="topContainer">
+            <SocialMedia />
+            <Link to="/">
+              <img
+                src={`http:${logo.file.url}`}
+                alt={logo.description}
+                className="logo"
+              />
+            </Link>
+          </div>
+          <div className="bottomContainer">
+            {new Date().getFullYear()}
+            {data.contentfulFooter.text}
+          </div>
+        </FooterStyle>
+      }
+    >
+      <div>Hello</div>
+    </BackgroundImage>
   )
 }
 

@@ -2,9 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Helmet from "react-helmet"
 
-{
-  /*MORE INFO: https://www.iamtimsmith.com/blog/creating-a-better-seo-component-for-gatsby */
-}
+/*MORE INFO: https://www.iamtimsmith.com/blog/creating-a-better-seo-component-for-gatsby */
 
 const SEO = props => {
   const data = useStaticQuery(graphql`

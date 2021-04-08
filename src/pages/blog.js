@@ -6,7 +6,11 @@ import PageLayout from "../components/layouts/page-layout"
 import MasonryGallery from "../components/layouts/masonry-gallery"
 import SEO from "../components/seo"
 
-const BlogStyle = styled.div``
+const BlogStyle = styled.div`
+  .image {
+    vertical-align: bottom;
+  }
+`
 
 export default function Blog({ data }) {
   const blog = data.contentfulBlog
@@ -16,45 +20,52 @@ export default function Blog({ data }) {
   return (
     <PageLayout>
       <SEO
-        title="Blog"
-        description="This is the homepage for a gatsby website"
-        image="https://placeimg.com/300/300"
-        slug="/blog"
+        title={blog.title}
+        description={blog.description}
+        image={image}
+        slug={blog.slug}
       />
-      <h1>{blog.title}</h1>
-      <GatsbyImage image={image} alt={image.description} />
-      <div
-        dangerouslySetInnerHTML={{
-          __html: blog.text.childMarkdownRemark.html,
-        }}
-      />
-      {blogPost.map(post => {
-        return (
-          <div key={post.id}>
-            <h1>{post.title}</h1>
-            <h1>{post.date}</h1>
+      <BlogStyle>
+        <h1>{blog.title}</h1>
+        <GatsbyImage
+          image={image}
+          alt={blog.image.description}
+          className="image"
+        />
+        <div
+          dangerouslySetInnerHTML={{
+            __html: blog.text.childMarkdownRemark.html,
+          }}
+        />
+        {blogPost.map(post => {
+          return (
+            <div key={post.id}>
+              <h1>{post.title}</h1>
+              <h1>{post.date}</h1>
 
-            <div
-              dangerouslySetInnerHTML={{
-                __html: post.text.childMarkdownRemark.html,
-              }}
-            />
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: post.text.childMarkdownRemark.html,
+                }}
+              />
 
-            <MasonryGallery>
-              {post.gallery.map(postImages => {
-                const galleryImages = getImage(postImages)
-                return (
-                  <GatsbyImage
-                    key={galleryImages.id}
-                    image={galleryImages}
-                    alt={galleryImages.description}
-                  />
-                )
-              })}
-            </MasonryGallery>
-          </div>
-        )
-      })}
+              <MasonryGallery>
+                {post.gallery.map(postImages => {
+                  const galleryImages = getImage(postImages)
+                  return (
+                    <GatsbyImage
+                      key={galleryImages.id}
+                      image={galleryImages}
+                      alt={postImages.description}
+                      className="image"
+                    />
+                  )
+                })}
+              </MasonryGallery>
+            </div>
+          )
+        })}
+      </BlogStyle>
     </PageLayout>
   )
 }
@@ -78,6 +89,8 @@ export const query = graphql`
           html
         }
       }
+      description
+      slug
     }
 
     allContentfulBlogPost(sort: { fields: date, order: DESC }) {

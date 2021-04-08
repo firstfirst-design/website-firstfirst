@@ -1,20 +1,72 @@
 import React from "react"
+import { graphql } from "gatsby"
 import styled from "styled-components"
-import PageLayout from "../components/layouts/page-layout"
 import SEO from "../components/seo"
+import BackgroundImage from "../components/layouts/background-image"
 
-const ErrorStyle = styled.div``
+const ErrorStyle = styled.div`
+  height: 100vh;
+`
 
-export default function Error() {
+const ErrorContentStyle = styled.div`
+  text-align: center;
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+export default function Error({ data }) {
+  const error = data.contentfulError
+
   return (
-    <PageLayout>
+    <ErrorStyle>
       <SEO
-        title="Home"
-        description="This is the homepage for a gatsby website"
-        image="https://placeimg.com/300/300"
-        slug="/"
+        title={error.title}
+        description={error.description}
+        image={error.image}
+        slug={error.slug}
       />
-      404
-    </PageLayout>
+
+      <BackgroundImage
+        image={error.image}
+        alt={error.image.description}
+        content={
+          <ErrorContentStyle>
+            <h1
+              dangerouslySetInnerHTML={{
+                __html: error.text.childMarkdownRemark.html,
+              }}
+            />
+          </ErrorContentStyle>
+        }
+      />
+    </ErrorStyle>
   )
 }
+
+export const query = graphql`
+  query ErrorQuery {
+    contentfulError {
+      title
+      image {
+        gatsbyImageData(
+          layout: CONSTRAINED
+          quality: 100
+          placeholder: BLURRED
+          formats: [AUTO, WEBP]
+        )
+        description
+      }
+      text {
+        childMarkdownRemark {
+          html
+        }
+      }
+      description
+      slug
+    }
+  }
+`
