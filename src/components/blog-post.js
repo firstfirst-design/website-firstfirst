@@ -70,8 +70,8 @@ export default function BlogPost() {
           return (
             <div key={post.id} className="flexbox">
               <div className="text">
-                <h1>{post.title}</h1>
-                <h3>{post.date}</h3>
+                <h3>{post.title}</h3>
+                <h4>{post.date}</h4>
 
                 <div
                   dangerouslySetInnerHTML={{

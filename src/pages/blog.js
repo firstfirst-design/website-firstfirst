@@ -27,6 +27,11 @@ const BlogStyle = styled.div`
       flex: 1;
       margin-left: ${rhythm(2)};
     }
+
+    .postText {
+      width: 50%;
+      padding-right: ${rhythm(1)};
+    }
   }
 `
 
@@ -65,10 +70,11 @@ export default function Blog({ data }) {
         {blogPost.map(post => {
           return (
             <div key={post.id}>
-              <h1>{post.title}</h1>
-              <h3>{post.date}</h3>
+              <h3>{post.title}</h3>
+              <h4>{post.date}</h4>
 
               <div
+                className="postText"
                 dangerouslySetInnerHTML={{
                   __html: post.text.childMarkdownRemark.html,
                 }}

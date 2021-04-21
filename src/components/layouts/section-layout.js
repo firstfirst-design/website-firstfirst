@@ -6,7 +6,7 @@ const SectionLayoutStyle = styled.div`
   margin-bottom: ${rhythm(5)};
 
   @media (min-width: 992px) {
-    margin-bottom: ${rhythm(15)};
+    margin-bottom: ${rhythm(16)};
   }
 `
 

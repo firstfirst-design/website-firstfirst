@@ -3,33 +3,33 @@ import styled from "styled-components"
 import { rhythm } from "../utils/typography"
 
 const FormStyle = styled.div`
-  display: flex;
-
-  .name {
+  .field {
     display: flex;
     flex-direction: column;
     margin-bottom: ${rhythm(2)};
+    width: 100%;
   }
 
-  .email {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: ${rhythm(2)};
+  .input {
+    padding-bottom: ${rhythm(1 / 2)};
   }
 
-  .message {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: ${rhythm(2)};
-  }
-
-  #buttonContainer {
+  .buttonContainer {
     display: flex;
     justify-content: space-between;
+  }
 
-    button:hover {
-      background-color: #ccce5f;
-    }
+  .button {
+    color: blue;
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  button:hover {
+    color: red;
   }
 `
 
@@ -45,26 +45,32 @@ export default function Form() {
       >
         <input type="hidden" name="form-name" value="Form" />
 
-        <div className="name">
-          <label htmlFor="name">Name</label>
-          <input type="text" name="name" id="name" />
+        <div className="field">
+          <label htmlFor="name">
+            <h4>Name</h4>
+          </label>
+          <input type="text" name="name" className="input" />
         </div>
 
-        <div className="email">
-          <label htmlFor="email">Email</label>
-          <input type="text" name="email" id="email" />
+        <div className="field">
+          <label htmlFor="email">
+            <h4>Email</h4>
+          </label>
+          <input type="text" name="email" className="input" />
         </div>
 
-        <div className="message">
-          <label htmlFor="message">Message</label>
-          <textarea name="message" id="message" rows="6" />
+        <div className="field">
+          <label htmlFor="message">
+            <h4>Message</h4>
+          </label>
+          <textarea name="message" className="input" rows="3" />
         </div>
-        <div id="buttonContainer">
-          <button type="submit" value="Send Message" className="special">
-            send
+        <div className="buttonContainer">
+          <button type="submit" value="Send Message" className="button">
+            <h4>Send</h4>
           </button>
-          <button type="reset" value="Clear">
-            clear
+          <button type="reset" value="Clear" className="button">
+            <h4>Clear</h4>
           </button>
         </div>
       </form>

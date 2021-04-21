@@ -47,7 +47,7 @@ export default function SpotifyPlayer() {
           allow="encrypted-media"
         />
         <div className="text">
-          <h1>{radio.title}</h1>
+          <h3>{radio.title}</h3>
           <div
             dangerouslySetInnerHTML={{
               __html: radio.text.childMarkdownRemark.html,

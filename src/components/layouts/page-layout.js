@@ -9,12 +9,9 @@ const PageLayoutStyle = styled.div`
 
   /*FONT*/
 
-  h1 {
-    text-transform: uppercase;
-    text-align: center;
-  }
-
+  h1,
   h3 {
+    text-transform: uppercase;
     text-align: center;
   }
 
@@ -45,6 +42,11 @@ const PageLayoutStyle = styled.div`
 
   @media (min-width: 992px) {
     margin: ${rhythm(15)} 15% ${rhythm(1)} 15%;
+
+    h1,
+    h3 {
+      text-align: left;
+    }
   }
 `
 
