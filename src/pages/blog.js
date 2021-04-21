@@ -31,6 +31,7 @@ const BlogStyle = styled.div`
     .postText {
       width: 50%;
       padding-right: ${rhythm(1)};
+      margin-bottom: ${rhythm(2)};
     }
   }
 `

@@ -18,7 +18,7 @@ const PageLayoutStyle = styled.div`
   /*LINKS*/
 
   a {
-    color: blue;
+    color: #b0e0e6;
     text-decoration: none;
   }
 
@@ -41,7 +41,7 @@ const PageLayoutStyle = styled.div`
   }
 
   @media (min-width: 992px) {
-    margin: ${rhythm(15)} 15% ${rhythm(1)} 15%;
+    margin: ${rhythm(15)} 15% ${rhythm(1 / 2)} 15%;
 
     h1,
     h3 {

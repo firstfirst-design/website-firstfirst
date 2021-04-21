@@ -17,7 +17,7 @@ export default function SocialMedia() {
   const socialMedia = data.contentfulSocialMedia
 
   return (
-    <div
+    <h3
       dangerouslySetInnerHTML={{
         __html: socialMedia.text.childMarkdownRemark.html,
       }}

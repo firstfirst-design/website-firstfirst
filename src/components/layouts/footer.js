@@ -34,7 +34,7 @@ const FooterStyle = styled.div`
   }
 
   @media (min-width: 992px) {
-    height: 30vh;
+    height: 25vh;
     padding: ${rhythm(1)};
   }
 `

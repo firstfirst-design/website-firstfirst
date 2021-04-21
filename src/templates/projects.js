@@ -5,16 +5,55 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { rhythm } from "../utils/typography"
 import PageLayout from "../components/layouts/page-layout"
+import SectionLayout from "../components/layouts/section-layout"
 import SEO from "../components/seo"
 import MasonryGallery from "../components/layouts/masonry-gallery"
 
 const ProjectsStyle = styled.div`
-  .image {
+  .titleImage {
     vertical-align: bottom;
+    margin-bottom: ${rhythm(8)};
+  }
+
   }
 
   .text {
-    margin-bottom: ${rhythm(-1)};
+    margin-bottom: ${rhythm(2)};
+  }
+
+  @media (min-width: 992px) {
+
+    .title {
+      flex: 3;
+      margin-right: ${rhythm(1)};
+    }
+    .placeholder {
+      flex: 1;
+      margin-left: ${rhythm(1)};
+    }
+
+    .flexbox {
+      display: flex;
+    }
+
+    .titleImage {
+      flex: 3;
+      margin-right: ${rhythm(1)};
+    }
+
+    .info {
+      flex: 1;
+      margin-left: ${rhythm(1)};
+    }
+
+   .text {
+      width: 50%;
+      padding-right: ${rhythm(1)};
+    }
+
+    .links {
+      margin-bottom: ${rhythm(8)};
+    }
   }
 `
 
@@ -32,46 +71,57 @@ export default function Projects({ data }) {
       />
 
       <ProjectsStyle>
-        <h1>{projects.title}</h1>
-        <p>{projects.client}</p>
-        <p>{projects.work}</p>
+        <div className="flexbox">
+          <h1 className="title">{projects.title}</h1>
+          <div className="placeholder"></div>
+        </div>
+        <div className="flexbox">
+          <GatsbyImage
+            className="titleImage"
+            image={image}
+            alt={projects.image.description}
+          />
 
-        <GatsbyImage
-          className="image"
-          image={image}
-          alt={projects.image.description}
-        />
+          <div className="info">
+            <h3>{projects.client}</h3>
+            <h4>{projects.work}</h4>
+          </div>
+        </div>
         <div
           className="text"
           dangerouslySetInnerHTML={{
             __html: projects.text.childMarkdownRemark.html,
           }}
         />
-        <MasonryGallery>
-          {projects.gallery.map(galleryImage => {
-            const image = getImage(galleryImage)
+        <SectionLayout>
+          <MasonryGallery>
+            {projects.gallery.map(galleryImage => {
+              const image = getImage(galleryImage)
+              return (
+                <GatsbyImage
+                  className="image"
+                  key={galleryImage.id}
+                  image={image}
+                  alt={galleryImage.description}
+                />
+              )
+            })}
+          </MasonryGallery>
+        </SectionLayout>
+
+        <div className="links">
+          {data.allContentfulProjects.nodes.map(projects => {
             return (
-              <GatsbyImage
-                className="image"
-                key={galleryImage.id}
-                image={image}
-                alt={galleryImage.description}
-              />
+              <Link
+                to={`/${projects.slug}`}
+                key={projects.id}
+                activeClassName="active"
+              >
+                <h3>{`${projects.title} -- ${projects.work}`}</h3>
+              </Link>
             )
           })}
-        </MasonryGallery>
-
-        {data.allContentfulProjects.nodes.map(projects => {
-          return (
-            <Link
-              to={`/${projects.slug}`}
-              key={projects.id}
-              activeClassName="active"
-            >
-              <h1>{`${projects.title} -${projects.work}`}</h1>
-            </Link>
-          )
-        })}
+        </div>
       </ProjectsStyle>
     </PageLayout>
   )
