@@ -8,6 +8,7 @@ import RandomImage from "../components/random-image"
 import What from "../components/what"
 import Gallery from "../components/gallery"
 import BlogPost from "../components/blog-post"
+import SpotifyPlayer from "../components/spotify-player"
 
 const HomeStyle = styled.div``
 
@@ -28,6 +29,11 @@ export default function Home({ data }) {
         <What />
         <Gallery />
         <BlogPost />
+        <SpotifyPlayer
+          uri="spotify:playlist:5LLbIbKo31dMi9JfYu8oNk"
+          theme="white"
+          view="list"
+        />
       </HomeStyle>
     </PageLayout>
   )

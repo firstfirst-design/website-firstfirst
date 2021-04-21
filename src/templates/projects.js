@@ -33,12 +33,9 @@ export default function Projects({ data }) {
 
       <ProjectsStyle>
         <h1>{projects.title}</h1>
-        <div
-          className="body"
-          dangerouslySetInnerHTML={{
-            __html: projects.info.childMarkdownRemark.html,
-          }}
-        />
+        <p>{projects.client}</p>
+        <p>{projects.work}</p>
+
         <GatsbyImage
           className="image"
           image={image}
@@ -71,7 +68,7 @@ export default function Projects({ data }) {
               key={projects.id}
               activeClassName="active"
             >
-              <h1>{projects.title}</h1>
+              <h1>{`${projects.title} -${projects.work}`}</h1>
             </Link>
           )
         })}
@@ -85,11 +82,8 @@ export const projectsQuery = graphql`
     contentfulProjects(id: { eq: $id }) {
       id
       title
-      info {
-        childMarkdownRemark {
-          html
-        }
-      }
+      client
+      work
       image {
         gatsbyImageData(
           layout: CONSTRAINED
@@ -123,6 +117,7 @@ export const projectsQuery = graphql`
       nodes {
         id
         title
+        work
         slug
       }
     }

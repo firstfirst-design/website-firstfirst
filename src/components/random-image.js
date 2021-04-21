@@ -2,9 +2,10 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 import BackgroundImage from "./layouts/background-image"
+import SectionLayout from "./layouts/section-layout"
 
 const RandomImageStyle = styled.div`
-  height: 200px;
+  height: 100vh;
 `
 
 const RandomImage = () => {
@@ -30,12 +31,14 @@ const RandomImage = () => {
   const randomizedImage = images[Math.floor(Math.random() * images.length)]
 
   return (
-    <RandomImageStyle>
-      <BackgroundImage
-        image={randomizedImage}
-        alt={randomizedImage.description}
-      />
-    </RandomImageStyle>
+    <SectionLayout>
+      <RandomImageStyle>
+        <BackgroundImage
+          image={randomizedImage}
+          alt={randomizedImage.description}
+        />
+      </RandomImageStyle>
+    </SectionLayout>
   )
 }
 

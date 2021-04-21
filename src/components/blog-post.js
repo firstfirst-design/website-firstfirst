@@ -3,6 +3,8 @@ import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import styled from "styled-components"
+import { rhythm } from "../utils/typography"
+import SectionLayout from "./layouts/section-layout"
 
 const BlogPostStyle = styled.div`
   .image {
@@ -10,6 +12,22 @@ const BlogPostStyle = styled.div`
     filter: grayscale(0);
     :hover {
       filter: grayscale(30%);
+    }
+  }
+
+  @media (min-width: 992px) {
+    .flexbox {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .text {
+      flex: 1;
+      margin-right: ${rhythm(2)};
+    }
+    .link {
+      flex: 3;
+      margin-left: ${rhythm(2)};
     }
   }
 `
@@ -45,29 +63,33 @@ export default function BlogPost() {
   const blogPost = data.allContentfulBlogPost.nodes
 
   return (
-    <BlogPostStyle>
-      {blogPost.map(post => {
-        const postImage = getImage(post.image)
-        return (
-          <div key={post.id}>
-            <h1>{post.title}</h1>
-            <h1>{post.date}</h1>
+    <SectionLayout>
+      <BlogPostStyle>
+        {blogPost.map(post => {
+          const postImage = getImage(post.image)
+          return (
+            <div key={post.id} className="flexbox">
+              <div className="text">
+                <h1>{post.title}</h1>
+                <h3>{post.date}</h3>
 
-            <div
-              dangerouslySetInnerHTML={{
-                __html: post.text.childMarkdownRemark.excerpt,
-              }}
-            />
-            <Link to="/blog">
-              <GatsbyImage
-                className="image"
-                image={postImage}
-                alt={post.image.description}
-              />
-            </Link>
-          </div>
-        )
-      })}
-    </BlogPostStyle>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: post.text.childMarkdownRemark.excerpt,
+                  }}
+                />
+              </div>
+              <Link to="/blog" className="link">
+                <GatsbyImage
+                  className="image"
+                  image={postImage}
+                  alt={post.image.description}
+                />
+              </Link>
+            </div>
+          )
+        })}
+      </BlogPostStyle>
+    </SectionLayout>
   )
 }

@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 import BackgroundImage from "../layouts/background-image"
 import SocialMedia from "./social-media"
+import { rhythm } from "../../utils/typography"
 
 const FooterStyle = styled.div`
   height: 50vh;
@@ -30,6 +31,11 @@ const FooterStyle = styled.div`
   .logo:hover {
     filter: invert(11%) sepia(99%) saturate(7436%) hue-rotate(360deg)
       brightness(91%) contrast(122%);
+  }
+
+  @media (min-width: 992px) {
+    height: 30vh;
+    padding: ${rhythm(1)};
   }
 `
 

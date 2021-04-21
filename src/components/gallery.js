@@ -4,6 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import MasonryGallery from "../components/layouts/masonry-gallery"
+import SectionLayout from "./layouts/section-layout"
 
 const GalleryStyle = styled.div`
   .image {
@@ -33,22 +34,24 @@ export default function Gallery() {
     }
   `)
   return (
-    <GalleryStyle>
-      <MasonryGallery>
-        {data.allContentfulProjects.nodes.map(gallery => {
-          const images = getImage(gallery.image)
-          return (
-            <Link to={gallery.slug}>
-              <GatsbyImage
-                className="image"
-                key={gallery.id}
-                image={images}
-                alt={gallery.image.description}
-              />
-            </Link>
-          )
-        })}
-      </MasonryGallery>
-    </GalleryStyle>
+    <SectionLayout>
+      <GalleryStyle>
+        <MasonryGallery>
+          {data.allContentfulProjects.nodes.map(gallery => {
+            const images = getImage(gallery.image)
+            return (
+              <Link to={gallery.slug}>
+                <GatsbyImage
+                  className="image"
+                  key={gallery.id}
+                  image={images}
+                  alt={gallery.image.description}
+                />
+              </Link>
+            )
+          })}
+        </MasonryGallery>
+      </GalleryStyle>
+    </SectionLayout>
   )
 }

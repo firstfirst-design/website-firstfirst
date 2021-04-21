@@ -5,12 +5,16 @@ import styled from "styled-components"
 import { rhythm } from "../../utils/typography"
 
 const PageLayoutStyle = styled.div`
-  margin: ${rhythm(1 / 4)} ${rhythm(2)} ${rhythm(1 / 4)} ${rhythm(1 / 4)};
+  margin: ${rhythm(0)} ${rhythm(2)} ${rhythm(0)} ${rhythm(0)};
 
   /*FONT*/
 
   h1 {
     text-transform: uppercase;
+    text-align: center;
+  }
+
+  h3 {
     text-align: center;
   }
 
@@ -37,6 +41,10 @@ const PageLayoutStyle = styled.div`
     resize: none;
     border: none;
     border-bottom: 1px solid black;
+  }
+
+  @media (min-width: 992px) {
+    margin: ${rhythm(15)} 15% ${rhythm(1)} 15%;
   }
 `
 
