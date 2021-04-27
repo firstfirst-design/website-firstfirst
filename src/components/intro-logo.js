@@ -9,6 +9,7 @@ const IntroLogoStyle = styled.div`
   }
 
   .first {
+    margin-bottom: ${rhythm(1)};
     animation: first 4s step-start infinite;
     animation-delay: 2s;
   }
@@ -33,10 +34,6 @@ const IntroLogoStyle = styled.div`
   @media (min-width: 992px) {
     width: 50%;
     margin: ${rhythm(0)} ${rhythm(0)} ${rhythm(4)} ${rhythm(0)};
-
-    .first {
-      margin-bottom: ${rhythm(1)};
-    }
   }
 `
 

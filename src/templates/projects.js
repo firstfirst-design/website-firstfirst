@@ -15,6 +15,10 @@ const ProjectsStyle = styled.div`
     margin-bottom: ${rhythm(8)};
   }
 
+  .projectLinks3 {
+    margin-bottom: ${rhythm(0)};
+  }
+
   }
 
   .text {
@@ -117,7 +121,8 @@ export default function Projects({ data }) {
                 key={projects.id}
                 activeClassName="active"
               >
-                <h3>{`${projects.title} -- ${projects.work}`}</h3>
+                <h3 className="projectLinks3">{projects.title}</h3>
+                <h4>{projects.work}</h4>
               </Link>
             )
           })}

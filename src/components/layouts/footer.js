@@ -1,41 +1,29 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
-import { Link } from "gatsby"
 import BackgroundImage from "../layouts/background-image"
 import SocialMedia from "./social-media"
 import { rhythm } from "../../utils/typography"
 
 const FooterStyle = styled.div`
-  height: 50vh;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  .topContainer {
+  .backgroundImageContainer {
+    padding: ${rhythm(1 / 2)};
+    height: 50vh;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
   }
 
-  .bottomContainer {
+  .copyright {
     text-align: center;
   }
 
-  .logo {
-    width: 5rem;
-    filter: invert(8%) sepia(100%) saturate(7209%) hue-rotate(248deg)
-      brightness(94%) contrast(143%);
-  }
-
-  .logo:hover {
-    filter: invert(11%) sepia(99%) saturate(7436%) hue-rotate(360deg)
-      brightness(91%) contrast(122%);
-  }
-
   @media (min-width: 992px) {
-    height: 25vh;
-    padding: ${rhythm(1)};
+    .backgroundImageContainer {
+      height: 33vh;
+      flex-direction: row;
+      align-items: flex-end;
+    }
   }
 `
 
@@ -67,33 +55,23 @@ const Footer = () => {
   )
 
   const footer = data.contentfulFooter
-  const logo = data.contentfulAsset
 
   return (
-    <BackgroundImage
-      image={footer.image}
-      alt={footer.image.description}
-      content={
-        <FooterStyle>
-          <div className="topContainer">
+    <FooterStyle>
+      <BackgroundImage
+        image={footer.image}
+        alt={footer.image.description}
+        content={
+          <div className="backgroundImageContainer">
             <SocialMedia />
-            <Link to="/">
-              <img
-                src={`http:${logo.file.url}`}
-                alt={logo.description}
-                className="logo"
-              />
-            </Link>
+            <div className="copyright">
+              {new Date().getFullYear()}
+              {data.contentfulFooter.text}
+            </div>
           </div>
-          <div className="bottomContainer">
-            {new Date().getFullYear()}
-            {data.contentfulFooter.text}
-          </div>
-        </FooterStyle>
-      }
-    >
-      <div>Hello</div>
-    </BackgroundImage>
+        }
+      ></BackgroundImage>
+    </FooterStyle>
   )
 }
 

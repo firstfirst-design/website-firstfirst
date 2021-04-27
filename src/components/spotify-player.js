@@ -5,15 +5,19 @@ import { rhythm } from "../utils/typography"
 import SectionLayout from "./layouts/section-layout"
 
 const SpotifyPlayerStyle = styled.div`
-  display: flex;
-  .player {
-    flex: 3;
-    margin: ${rhythm(0)} ${rhythm(2)} ${rhythm(0)} ${rhythm(0)};
-  }
+  @media (min-width: 992px) {
+    display: flex;
+    .player {
+      flex: 3;
+      order: 1;
+      margin: ${rhythm(0)} ${rhythm(2)} ${rhythm(0)} ${rhythm(0)};
+    }
 
-  .text {
-    flex: 1;
-    margin-left: ${rhythm(2)};
+    .text {
+      flex: 1;
+      order: 2;
+      margin-left: ${rhythm(2)};
+    }
   }
 `
 
@@ -36,6 +40,14 @@ export default function SpotifyPlayer() {
   return (
     <SectionLayout>
       <SpotifyPlayerStyle>
+        <div className="text">
+          <h3>{radio.title}</h3>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: radio.text.childMarkdownRemark.html,
+            }}
+          />
+        </div>
         <iframe
           className="player"
           title="Spotify"
@@ -46,14 +58,6 @@ export default function SpotifyPlayer() {
           allowtransparency="true"
           allow="encrypted-media"
         />
-        <div className="text">
-          <h3>{radio.title}</h3>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: radio.text.childMarkdownRemark.html,
-            }}
-          />
-        </div>
       </SpotifyPlayerStyle>
     </SectionLayout>
   )

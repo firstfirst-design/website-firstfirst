@@ -1,21 +1,47 @@
 import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
+import { rhythm } from "../utils/typography"
 import SEO from "../components/seo"
 import BackgroundImage from "../components/layouts/background-image"
+import SocialMedia from "../components/layouts/social-media"
+import Navigation from "../components/layouts/navigation"
 
 const MessageSuccessStyle = styled.div`
-  height: 100vh;
-`
-
-const MessageSuccessContentStyle = styled.div`
-  text-align: center;
   color: white;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
+  .content {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .flexbox {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  h3 {
+    text-transform: uppercase;
+  }
+
+  a {
+    color: #e0e0e0;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: red;
+  }
+
+  @media (min-width: 992px) {
+    .content {
+      margin: ${rhythm(0)} 15% ${rhythm(0)} 15%;
+    }
+  }
 `
 
 export default function MessageSuccess({ data }) {
@@ -34,13 +60,19 @@ export default function MessageSuccess({ data }) {
         image={messageSuccess.image}
         alt={messageSuccess.image.description}
         content={
-          <MessageSuccessContentStyle>
-            <h1
-              dangerouslySetInnerHTML={{
-                __html: messageSuccess.text.childMarkdownRemark.html,
-              }}
-            />
-          </MessageSuccessContentStyle>
+          <div className="content">
+            <div>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: messageSuccess.text.childMarkdownRemark.html,
+                }}
+              />
+              <div className="flexbox">
+                <Navigation />
+                <SocialMedia />
+              </div>
+            </div>
+          </div>
         }
       />
     </MessageSuccessStyle>
@@ -67,6 +99,9 @@ export const query = graphql`
       }
       description
       slug
+    }
+    contentfulHome {
+      title
     }
   }
 `

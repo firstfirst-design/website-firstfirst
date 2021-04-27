@@ -5,7 +5,17 @@ import styled from "styled-components"
 import { rhythm } from "../../utils/typography"
 
 const PageLayoutStyle = styled.div`
-  margin: ${rhythm(0)} ${rhythm(2)} ${rhythm(0)} ${rhythm(0)};
+  margin: ${rhythm(8)} ${rhythm(1 / 2)} ${rhythm(1 / 2)} ${rhythm(1 / 2)};
+
+  .navigation {
+    position: fixed;
+    top: ${rhythm(1 / 2)};
+    right: ${rhythm(1 / 2)};
+
+    h3 {
+      text-align: right;
+    }
+  }
 
   /*FONT*/
 
@@ -18,16 +28,18 @@ const PageLayoutStyle = styled.div`
   /*LINKS*/
 
   a {
-    color: #b0e0e6;
-    text-decoration: none;
+    color: black;
+    text-decoration: underline;
   }
 
   a:hover {
-    color: red;
+    color: blue;
+    text-decoration: none;
   }
 
   .active {
-    color: red;
+    color: #e30000;
+    text-decoration: none;
   }
 
   /*FORM*/
@@ -37,7 +49,7 @@ const PageLayoutStyle = styled.div`
     outline: none;
     resize: none;
     border: none;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid black;
   }
 
   @media (min-width: 992px) {
@@ -53,7 +65,9 @@ const PageLayoutStyle = styled.div`
 export default function PageLayout({ children }) {
   return (
     <PageLayoutStyle>
-      <Navigation />
+      <div className="navigation">
+        <Navigation />
+      </div>
       {children}
       <Footer />
     </PageLayoutStyle>

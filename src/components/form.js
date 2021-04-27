@@ -20,16 +20,18 @@ const FormStyle = styled.div`
   }
 
   .button {
-    color: blue;
     background: none;
     border: none;
     margin: 0;
     padding: 0;
     cursor: pointer;
+    text-decoration: underline;
+    outline: none;
   }
 
   button:hover {
-    color: red;
+    color: blue;
+    text-decoration: none;
   }
 `
 
@@ -47,30 +49,30 @@ export default function Form() {
 
         <div className="field">
           <label htmlFor="name">
-            <h4>Name</h4>
+            <h3>Name</h3>
           </label>
           <input type="text" name="name" className="input" />
         </div>
 
         <div className="field">
           <label htmlFor="email">
-            <h4>Email</h4>
+            <h3>Email</h3>
           </label>
           <input type="text" name="email" className="input" />
         </div>
 
         <div className="field">
           <label htmlFor="message">
-            <h4>Message</h4>
+            <h3>Message</h3>
           </label>
           <textarea name="message" className="input" rows="3" />
         </div>
         <div className="buttonContainer">
           <button type="submit" value="Send Message" className="button">
-            <h4>Send</h4>
+            <h3>Send</h3>
           </button>
           <button type="reset" value="Clear" className="button">
-            <h4>Clear</h4>
+            <h3>Clear</h3>
           </button>
         </div>
       </form>

@@ -4,7 +4,7 @@ const typography = new Typography({
   googleFonts: [
     {
       name: "Poppins",
-      styles: ["800", "300"],
+      styles: ["700", "300"],
     },
   ],
 
@@ -13,7 +13,7 @@ const typography = new Typography({
   baseLineHeight: 1.5,
   headerFontFamily: ["Poppins", "sans-serif"],
   bodyFontFamily: ["Poppins", "sans-serif"],
-  headerWeight: 800,
+  headerWeight: 700,
   bodyWeight: 300,
 
   overrideStyles: ({ rhythm }, options, styles) => ({

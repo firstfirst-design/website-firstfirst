@@ -6,7 +6,10 @@ import SectionLayout from "./layouts/section-layout"
 
 const WhatStyle = styled.div`
   margin-bottom: ${rhythm(0)};
-  width: 50%;
+
+  @media (min-width: 992px) {
+    width: 50%;
+  }
 `
 
 export default function What() {
@@ -14,17 +17,25 @@ export default function What() {
     query WhatQuery {
       contentfulWhat {
         title
-        childContentfulWhatTextProductTextNode {
+        text {
           childMarkdownRemark {
             html
           }
         }
-        childContentfulWhatTextInteriorTextNode {
+        headingProduct
+        textProduct {
           childMarkdownRemark {
             html
           }
         }
-        childContentfulWhatTextWebTextNode {
+        headingInterior
+        textInterior {
+          childMarkdownRemark {
+            html
+          }
+        }
+        headingWeb
+        textWeb {
           childMarkdownRemark {
             html
           }
@@ -41,24 +52,28 @@ export default function What() {
         <div
           className="product"
           dangerouslySetInnerHTML={{
-            __html:
-              what.childContentfulWhatTextProductTextNode.childMarkdownRemark
-                .html,
+            __html: what.text.childMarkdownRemark.html,
           }}
         />
+        <h3>{what.headingProduct}</h3>
+        <div
+          className="product"
+          dangerouslySetInnerHTML={{
+            __html: what.textProduct.childMarkdownRemark.html,
+          }}
+        />
+        <h3>{what.headingInterior}</h3>
         <div
           className="interior"
           dangerouslySetInnerHTML={{
-            __html:
-              what.childContentfulWhatTextInteriorTextNode.childMarkdownRemark
-                .html,
+            __html: what.textInterior.childMarkdownRemark.html,
           }}
         />
+        <h3>{what.headingWeb}</h3>
         <div
           className="web"
           dangerouslySetInnerHTML={{
-            __html:
-              what.childContentfulWhatTextWebTextNode.childMarkdownRemark.html,
+            __html: what.textWeb.childMarkdownRemark.html,
           }}
         />
       </WhatStyle>

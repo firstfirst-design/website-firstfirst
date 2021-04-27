@@ -1,21 +1,47 @@
 import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
+import { rhythm } from "../utils/typography"
 import SEO from "../components/seo"
 import BackgroundImage from "../components/layouts/background-image"
+import SocialMedia from "../components/layouts/social-media"
+import Navigation from "../components/layouts/navigation"
 
 const ErrorStyle = styled.div`
-  height: 100vh;
-`
-
-const ErrorContentStyle = styled.div`
-  text-align: center;
   color: white;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
+  .content {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .flexbox {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  h3 {
+    text-transform: uppercase;
+  }
+
+  a {
+    color: #e0e0e0;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: red;
+  }
+
+  @media (min-width: 992px) {
+    .content {
+      margin: ${rhythm(0)} 15% ${rhythm(0)} 15%;
+    }
+  }
 `
 
 export default function Error({ data }) {
@@ -34,13 +60,19 @@ export default function Error({ data }) {
         image={error.image}
         alt={error.image.description}
         content={
-          <ErrorContentStyle>
-            <h1
-              dangerouslySetInnerHTML={{
-                __html: error.text.childMarkdownRemark.html,
-              }}
-            />
-          </ErrorContentStyle>
+          <div className="content">
+            <div>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: error.text.childMarkdownRemark.html,
+                }}
+              />
+              <div className="flexbox">
+                <Navigation />
+                <SocialMedia />
+              </div>
+            </div>
+          </div>
         }
       />
     </ErrorStyle>
