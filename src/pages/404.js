@@ -29,12 +29,14 @@ const ErrorStyle = styled.div`
   }
 
   a {
-    color: #e0e0e0;
-    text-decoration: none;
+    color: white;
+    text-decoration-color: blue;
+    text-decoration-thickness: ${rhythm(1 / 8)};
+    text-underline-offset: ${rhythm(1 / 16)};
   }
 
   a:hover {
-    color: red;
+    text-decoration-color: red;
   }
 
   @media (min-width: 992px) {

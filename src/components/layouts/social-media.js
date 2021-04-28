@@ -4,9 +4,15 @@ import styled from "styled-components"
 import { rhythm } from "../../utils/typography"
 
 const SocialMediaStyle = styled.div`
+  margin-bottom: ${rhythm(-1 / 8)};
+
+  p {
+    margin-bottom: ${rhythm(0)};
+  }
+
   h3 {
-    margin-bottom: ${rhythm(-1)};
-    text-align: left;
+    margin-bottom: ${rhythm(1 / 8)};
+    text-align: left !important;
   }
 `
 
@@ -14,7 +20,22 @@ export default function SocialMedia() {
   const data = useStaticQuery(graphql`
     query SocialMediaQuery {
       contentfulSocialMedia {
-        text {
+        xing {
+          childMarkdownRemark {
+            html
+          }
+        }
+        linkedin {
+          childMarkdownRemark {
+            html
+          }
+        }
+        instagram {
+          childMarkdownRemark {
+            html
+          }
+        }
+        facebook {
           childMarkdownRemark {
             html
           }
@@ -29,7 +50,22 @@ export default function SocialMedia() {
     <SocialMediaStyle>
       <h3
         dangerouslySetInnerHTML={{
-          __html: socialMedia.text.childMarkdownRemark.html,
+          __html: socialMedia.xing.childMarkdownRemark.html,
+        }}
+      />
+      <h3
+        dangerouslySetInnerHTML={{
+          __html: socialMedia.linkedin.childMarkdownRemark.html,
+        }}
+      />
+      <h3
+        dangerouslySetInnerHTML={{
+          __html: socialMedia.instagram.childMarkdownRemark.html,
+        }}
+      />
+      <h3
+        dangerouslySetInnerHTML={{
+          __html: socialMedia.facebook.childMarkdownRemark.html,
         }}
       />
     </SocialMediaStyle>

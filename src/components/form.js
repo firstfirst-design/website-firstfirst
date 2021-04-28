@@ -3,6 +3,10 @@ import styled from "styled-components"
 import { rhythm } from "../utils/typography"
 
 const FormStyle = styled.div`
+  h3 {
+    margin-bottom: ${rhythm(1 / 8)};
+  }
+
   .field {
     display: flex;
     flex-direction: column;
@@ -11,7 +15,7 @@ const FormStyle = styled.div`
   }
 
   .input {
-    padding-bottom: ${rhythm(1 / 2)};
+    padding-bottom: ${rhythm(1 / 8)};
   }
 
   .buttonContainer {
@@ -26,12 +30,14 @@ const FormStyle = styled.div`
     padding: 0;
     cursor: pointer;
     text-decoration: underline;
+    text-decoration-color: blue;
+    text-decoration-thickness: ${rhythm(1 / 8)};
+    text-underline-offset: ${rhythm(1 / 16)};
     outline: none;
   }
 
   button:hover {
-    color: blue;
-    text-decoration: none;
+    text-decoration-color: red;
   }
 `
 
@@ -65,7 +71,7 @@ export default function Form() {
           <label htmlFor="message">
             <h3>Message</h3>
           </label>
-          <textarea name="message" className="input" rows="3" />
+          <textarea name="message" className="input" rows="8" />
         </div>
         <div className="buttonContainer">
           <button type="submit" value="Send Message" className="button">

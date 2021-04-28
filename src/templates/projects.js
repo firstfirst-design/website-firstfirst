@@ -15,8 +15,8 @@ const ProjectsStyle = styled.div`
     margin-bottom: ${rhythm(8)};
   }
 
-  .projectLinks3 {
-    margin-bottom: ${rhythm(0)};
+  .projectLinksH3 {
+    margin-bottom: ${rhythm(1 / 8)};
   }
 
   }
@@ -25,9 +25,8 @@ const ProjectsStyle = styled.div`
     margin-bottom: ${rhythm(2)};
   }
 
-  @media (min-width: 992px) {
-            h4 {
-  text-align: left;
+  @media (min-width: 992px) {h4 {
+  text-align: left !important;
 }
 
 
@@ -125,7 +124,7 @@ export default function Projects({ data }) {
                 key={projects.id}
                 activeClassName="active"
               >
-                <h3 className="projectLinks3">{projects.title}</h3>
+                <h3 className="projectLinksH3">{projects.title}</h3>
                 <h4>{projects.work}</h4>
               </Link>
             )

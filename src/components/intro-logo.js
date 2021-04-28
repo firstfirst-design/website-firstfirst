@@ -9,6 +9,7 @@ const IntroLogoStyle = styled.div`
   }
 
   .first {
+    color: red;
     margin-bottom: ${rhythm(1)};
     animation: first 4s step-start infinite;
     animation-delay: 2s;
@@ -16,18 +17,19 @@ const IntroLogoStyle = styled.div`
 
   @keyframes first {
     50% {
-      opacity: 0.5;
+      color: blue;
     }
   }
 
   .firstFlipped {
+    color: red;
     transform: scaleX(-1);
     animation: firstFlipped 4s step-start infinite;
   }
 
   @keyframes firstFlipped {
     50% {
-      opacity: 0.5;
+      color: blue;
     }
   }
 

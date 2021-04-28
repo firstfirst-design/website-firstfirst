@@ -31,8 +31,9 @@ const PageLayoutStyle = styled.div`
 
   a {
     color: black;
-    text-decoration-thickness: 2px;
-    text-underline-offset: ${rhythm(1 / 4)};
+    text-decoration-color: blue;
+    text-decoration-thickness: ${rhythm(1 / 8)};
+    text-underline-offset: ${rhythm(1 / 16)};
   }
 
   a:hover {
@@ -50,7 +51,7 @@ const PageLayoutStyle = styled.div`
     outline: none;
     resize: none;
     border: none;
-    border-bottom: 2px solid black;
+    border-bottom: ${rhythm(1 / 10)} solid black;
   }
 
   @media (min-width: 992px) {
