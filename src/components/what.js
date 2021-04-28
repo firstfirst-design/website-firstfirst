@@ -7,6 +7,12 @@ import SectionLayout from "./layouts/section-layout"
 const WhatStyle = styled.div`
   margin-bottom: ${rhythm(0)};
 
+  .intro,
+  .product,
+  .interior {
+    margin-bottom: ${rhythm(4)};
+  }
+
   @media (min-width: 992px) {
     width: 50%;
   }
@@ -50,7 +56,7 @@ export default function What() {
       <WhatStyle>
         <h1>{what.title}</h1>
         <div
-          className="product"
+          className="intro"
           dangerouslySetInnerHTML={{
             __html: what.text.childMarkdownRemark.html,
           }}

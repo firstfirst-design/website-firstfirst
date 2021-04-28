@@ -26,6 +26,10 @@ const ProjectsStyle = styled.div`
   }
 
   @media (min-width: 992px) {
+            h4 {
+  text-align: left;
+}
+
 
     .title {
       flex: 3;
@@ -42,12 +46,12 @@ const ProjectsStyle = styled.div`
 
     .titleImage {
       flex: 3;
-      margin-right: ${rhythm(1)};
+      margin-right: ${rhythm(2)};
     }
 
     .info {
       flex: 1;
-      margin-left: ${rhythm(1)};
+      margin-left: ${rhythm(2)};
     }
 
    .text {

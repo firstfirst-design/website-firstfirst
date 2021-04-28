@@ -6,6 +6,7 @@ import { rhythm } from "../../utils/typography"
 const SocialMediaStyle = styled.div`
   h3 {
     margin-bottom: ${rhythm(-1)};
+    text-align: left;
   }
 `
 

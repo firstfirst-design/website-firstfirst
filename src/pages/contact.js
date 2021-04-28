@@ -8,6 +8,10 @@ import SectionLayout from "../components/layouts/section-layout"
 import Form from "../components/form"
 
 const ContactStyle = styled.div`
+  .text {
+    margin-bottom: ${rhythm(4)};
+  }
+
   @media (min-width: 992px) {
     .flexbox {
       display: flex;

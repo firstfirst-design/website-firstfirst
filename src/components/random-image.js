@@ -5,7 +5,11 @@ import BackgroundImage from "./layouts/background-image"
 import SectionLayout from "./layouts/section-layout"
 
 const RandomImageStyle = styled.div`
-  height: 100vh;
+  height: 50vh;
+
+  @media (min-width: 992px) {
+    height: 100vh;
+  }
 `
 
 const RandomImage = () => {

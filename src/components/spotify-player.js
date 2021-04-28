@@ -5,8 +5,13 @@ import { rhythm } from "../utils/typography"
 import SectionLayout from "./layouts/section-layout"
 
 const SpotifyPlayerStyle = styled.div`
+  .player {
+    margin-bottom: ${rhythm(0)};
+  }
+
   @media (min-width: 992px) {
     display: flex;
+
     .player {
       flex: 3;
       order: 1;
@@ -53,7 +58,7 @@ export default function SpotifyPlayer() {
           title="Spotify"
           src="https://open.spotify.com/embed/playlist/5LLbIbKo31dMi9JfYu8oNk?si=xyHDTLl4R2Kp92Ym_hhoVA"
           width="100%"
-          height="350"
+          height={rhythm(400)}
           frameborder="0"
           allowtransparency="true"
           allow="encrypted-media"

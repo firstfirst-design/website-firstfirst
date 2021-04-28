@@ -7,8 +7,11 @@ import { rhythm } from "../utils/typography"
 import SectionLayout from "./layouts/section-layout"
 
 const BlogPostStyle = styled.div`
+  .text {
+    margin-bottom: ${rhythm(1)};
+  }
+
   .image {
-    vertical-align: bottom;
     filter: grayscale(0);
     :hover {
       filter: grayscale(30%);

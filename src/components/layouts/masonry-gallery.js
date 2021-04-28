@@ -5,7 +5,7 @@ import { rhythm } from "../../utils/typography"
 export default function MasonryGallery({ children }) {
   return (
     <ResponsiveMasonry columnsCountBreakPoints={{ 991: 1, 992: 2 }}>
-      <Masonry gutter={rhythm(2)}>{children}</Masonry>
+      <Masonry gutter={rhythm(1)}>{children}</Masonry>
     </ResponsiveMasonry>
   )
 }

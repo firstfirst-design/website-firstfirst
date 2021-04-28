@@ -6,7 +6,7 @@ import { Link } from "gatsby"
 
 const NavigationStyle = styled.header`
   h3 {
-    margin-bottom: ${rhythm(0)};
+    margin-bottom: ${rhythm(1 / 2)};
   }
 `
 

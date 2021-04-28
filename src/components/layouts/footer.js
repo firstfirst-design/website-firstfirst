@@ -10,19 +10,19 @@ const FooterStyle = styled.div`
     padding: ${rhythm(1 / 2)};
     height: 50vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: flex-end;
     justify-content: space-between;
   }
 
   .copyright {
-    text-align: center;
+    flex: 1;
+    text-align: right;
   }
 
   @media (min-width: 992px) {
     .backgroundImageContainer {
       height: 33vh;
-      flex-direction: row;
-      align-items: flex-end;
     }
   }
 `

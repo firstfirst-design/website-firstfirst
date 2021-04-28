@@ -8,6 +8,7 @@ const PageLayoutStyle = styled.div`
   margin: ${rhythm(8)} ${rhythm(1 / 2)} ${rhythm(1 / 2)} ${rhythm(1 / 2)};
 
   .navigation {
+    z-index: 1;
     position: fixed;
     top: ${rhythm(1 / 2)};
     right: ${rhythm(1 / 2)};
@@ -20,7 +21,8 @@ const PageLayoutStyle = styled.div`
   /*FONT*/
 
   h1,
-  h3 {
+  h3,
+  h4 {
     text-transform: uppercase;
     text-align: center;
   }
@@ -29,17 +31,16 @@ const PageLayoutStyle = styled.div`
 
   a {
     color: black;
-    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: ${rhythm(1 / 4)};
   }
 
   a:hover {
-    color: blue;
-    text-decoration: none;
+    text-decoration-color: red;
   }
 
   .active {
-    color: #e30000;
-    text-decoration: none;
+    text-decoration-color: red;
   }
 
   /*FORM*/

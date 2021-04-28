@@ -9,7 +9,7 @@ const typography = new Typography({
   ],
 
   baseFontSize: "15px",
-  scaleRatio: 4,
+  scaleRatio: 2,
   baseLineHeight: 1.5,
   headerFontFamily: ["Poppins", "sans-serif"],
   bodyFontFamily: ["Poppins", "sans-serif"],
@@ -18,7 +18,7 @@ const typography = new Typography({
 
   overrideStyles: ({ rhythm }, options, styles) => ({
     h1: {
-      marginBottom: rhythm(8),
+      marginBottom: rhythm(4),
     },
   }),
 })
