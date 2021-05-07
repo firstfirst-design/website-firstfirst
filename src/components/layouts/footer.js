@@ -15,6 +15,10 @@ const FooterStyle = styled.div`
     justify-content: space-between;
   }
 
+  h3 {
+    text-align: left !important;
+  }
+
   .copyright {
     flex: 1;
     text-align: right;

@@ -12,7 +12,6 @@ const SocialMediaStyle = styled.div`
 
   h3 {
     margin-bottom: ${rhythm(1 / 8)};
-    text-align: left !important;
   }
 `
 

@@ -81,6 +81,8 @@ export default function BlogPost() {
                     __html: post.text.childMarkdownRemark.excerpt,
                   }}
                 />
+                <br />
+                <Link to="/blog">more</Link>
               </div>
               <Link to="/blog" className="link">
                 <GatsbyImage

@@ -5,19 +5,25 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import MasonryGallery from "../components/layouts/masonry-gallery"
 import SectionLayout from "./layouts/section-layout"
+import { rhythm } from "../utils/typography"
 
-const GalleryStyle = styled.div`
+const StyledLink = styled(Link)`
   .image {
     vertical-align: bottom;
+  }
+
+  .text {
+    margin-top: ${rhythm(1 / 2)};
   }
 `
 
 export default function Gallery() {
   const data = useStaticQuery(graphql`
     query GalleryQuery {
-      allContentfulProjects {
+      allContentfulProjects(sort: { fields: orderNumber, order: DESC }) {
         nodes {
           id
+          title
           image {
             gatsbyImageData(
               layout: CONSTRAINED
@@ -35,23 +41,22 @@ export default function Gallery() {
   `)
   return (
     <SectionLayout>
-      <GalleryStyle>
-        <MasonryGallery>
-          {data.allContentfulProjects.nodes.map(gallery => {
-            const images = getImage(gallery.image)
-            return (
-              <Link to={gallery.slug}>
-                <GatsbyImage
-                  className="image"
-                  key={gallery.id}
-                  image={images}
-                  alt={gallery.image.description}
-                />
-              </Link>
-            )
-          })}
-        </MasonryGallery>
-      </GalleryStyle>
+      <MasonryGallery>
+        {data.allContentfulProjects.nodes.map(gallery => {
+          const images = getImage(gallery.image)
+          return (
+            <StyledLink to={gallery.slug}>
+              <GatsbyImage
+                className="image"
+                key={gallery.id}
+                image={images}
+                alt={gallery.image.description}
+              />
+              <div className="text">{gallery.title}</div>
+            </StyledLink>
+          )
+        })}
+      </MasonryGallery>
     </SectionLayout>
   )
 }

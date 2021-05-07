@@ -7,7 +7,7 @@ const slash = require(`slash`)
 const slugify = require(`slugify`)
 const slugifyOptions = {
   replacement: "-",
-  remove: /[$*_+~.()'"!\-:@]/g,
+  remove: /[$*_+~.()'"!\:@]/g,
   lower: true,
 }
 
@@ -22,6 +22,7 @@ exports.createPages = ({ graphql, actions }) => {
               node {
                 id
                 title
+                slug
               }
             }
           }
@@ -35,7 +36,7 @@ exports.createPages = ({ graphql, actions }) => {
       const pageTemplate = path.resolve(`./src/templates/projects.js`)
       _.each(result.data.allContentfulProjects.edges, edge => {
         createPage({
-          path: `/${slugify(edge.node.title, slugifyOptions)}/`,
+          path: `/${slugify(edge.node.slug, slugifyOptions)}/`,
           component: slash(pageTemplate),
           context: {
             id: edge.node.id,

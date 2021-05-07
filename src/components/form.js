@@ -7,6 +7,10 @@ const FormStyle = styled.div`
     margin-bottom: ${rhythm(1 / 8)};
   }
 
+  #form {
+    margin-bottom: ${rhythm(0)};
+  }
+
   .field {
     display: flex;
     flex-direction: column;

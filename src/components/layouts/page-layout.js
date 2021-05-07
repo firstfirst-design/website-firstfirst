@@ -55,10 +55,11 @@ const PageLayoutStyle = styled.div`
   }
 
   @media (min-width: 992px) {
-    margin: ${rhythm(15)} 15% ${rhythm(1 / 2)} 15%;
+    margin: ${rhythm(16)} 15% ${rhythm(1 / 2)} 15%;
 
     h1,
-    h3 {
+    h3,
+    h4 {
       text-align: left;
     }
   }

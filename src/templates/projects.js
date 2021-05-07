@@ -10,19 +10,28 @@ import SEO from "../components/seo"
 import MasonryGallery from "../components/layouts/masonry-gallery"
 
 const ProjectsStyle = styled.div`
-  .titleImage {
+
+.titleImage {
     vertical-align: bottom;
-    margin-bottom: ${rhythm(8)};
+    margin-bottom: ${rhythm(4)};
   }
 
-  .projectLinksH3 {
-    margin-bottom: ${rhythm(1 / 8)};
+  .info {
+    margin-bottom: ${rhythm(4)};
   }
 
   }
 
   .text {
-    margin-bottom: ${rhythm(2)};
+    margin-bottom: ${rhythm(1)};
+  }
+
+  .links {
+    margin-bottom: ${rhythm(4)};
+  }
+
+  .projectLinksH3 {
+    margin-bottom: ${rhythm(1 / 8)};
   }
 
   @media (min-width: 992px) {h4 {
@@ -45,7 +54,7 @@ const ProjectsStyle = styled.div`
 
     .titleImage {
       flex: 3;
-      margin-right: ${rhythm(2)};
+      margin: ${rhythm(0)} ${rhythm(2)} ${rhythm(8)} ${rhythm(0)};
     }
 
     .info {
@@ -56,6 +65,7 @@ const ProjectsStyle = styled.div`
    .text {
       width: 50%;
       padding-right: ${rhythm(1)};
+      margin-bottom: ${rhythm(4)};
     }
 
     .links {
@@ -90,7 +100,11 @@ export default function Projects({ data }) {
           />
 
           <div className="info">
-            <h3>{projects.client}</h3>
+            <h3
+              dangerouslySetInnerHTML={{
+                __html: projects.client.childMarkdownRemark.html,
+              }}
+            />
             <h4>{projects.work}</h4>
           </div>
         </div>
@@ -140,7 +154,11 @@ export const projectsQuery = graphql`
     contentfulProjects(id: { eq: $id }) {
       id
       title
-      client
+      client {
+        childMarkdownRemark {
+          html
+        }
+      }
       work
       image {
         gatsbyImageData(
@@ -171,7 +189,7 @@ export const projectsQuery = graphql`
       description
       slug
     }
-    allContentfulProjects {
+    allContentfulProjects(sort: { fields: orderNumber, order: DESC }) {
       nodes {
         id
         title

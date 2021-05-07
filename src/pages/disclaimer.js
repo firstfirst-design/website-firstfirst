@@ -7,6 +7,18 @@ import SectionLayout from "../components/layouts/section-layout"
 import SEO from "../components/seo"
 
 const DisclaimerStyle = styled.div`
+  h3 {
+    text-align: left;
+  }
+
+  .contact {
+    margin-bottom: ${rhythm(4)};
+  }
+
+  .disclaimer {
+    margin-bottom: ${rhythm(4)};
+  }
+
   @media (min-width: 992px) {
     .flexbox {
       display: flex;
@@ -24,7 +36,7 @@ const DisclaimerStyle = styled.div`
 
     .impressum {
       flex: 2;
-      margin-left: ${rhythm(2)};
+      margin: ${rhythm(0)} ${rhythm(0)} ${rhythm(-1)} ${rhythm(2)};
     }
   }
 `

@@ -20,6 +20,16 @@ const typography = new Typography({
     h1: {
       marginBottom: rhythm(4),
     },
+
+    "@media (min-width: 992px)": {
+      h1: {
+        fontSize: rhythm(2),
+        marginBottom: rhythm(8),
+      },
+      h3: {
+        fontSize: rhythm(1),
+      },
+    },
   }),
 })
 

@@ -9,8 +9,12 @@ import SEO from "../components/seo"
 import SectionLayout from "../components/layouts/section-layout"
 
 const BlogStyle = styled.div`
-  .image {
-    vertical-align: bottom;
+  .titleImage {
+    margin-bottom: ${rhythm(1)};
+  }
+
+  .postText {
+    margin-bottom: ${rhythm(1)};
   }
 
   @media (min-width: 992px) {

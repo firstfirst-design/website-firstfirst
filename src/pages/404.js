@@ -13,6 +13,7 @@ const ErrorStyle = styled.div`
 
   .content {
     height: 100vh;
+    padding: ${rhythm(1 / 2)};
     display: flex;
     justify-content: center;
     align-items: center;
