@@ -17,7 +17,7 @@ module.exports = {
   siteMetadata: {
     title: "First First",
     description: "This is my starter template for Gatsby V3",
-    url: "https://firstfirst.design/",
+    siteUrl: "https://firstfirst.design/",
     favicon: {
       svg: `static/favicon.svg`,
     },

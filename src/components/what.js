@@ -7,6 +7,10 @@ import SectionLayout from "./layouts/section-layout"
 const WhatStyle = styled.div`
   margin-bottom: ${rhythm(0)};
 
+  .headingIntro {
+    margin-bottom: ${rhythm(8)};
+  }
+
   .intro,
   .product,
   .interior {
@@ -15,6 +19,10 @@ const WhatStyle = styled.div`
 
   @media (min-width: 992px) {
     width: 50%;
+
+    .headingIntro {
+      margin-bottom: ${rhythm(16)};
+    }
   }
 `
 
@@ -22,6 +30,12 @@ export default function What() {
   const data = useStaticQuery(graphql`
     query WhatQuery {
       contentfulWhat {
+        headingIntro {
+          childMarkdownRemark {
+            html
+          }
+        }
+
         title
         text {
           childMarkdownRemark {
@@ -54,6 +68,12 @@ export default function What() {
   return (
     <SectionLayout>
       <WhatStyle>
+        <h3
+          className="headingIntro"
+          dangerouslySetInnerHTML={{
+            __html: what.headingIntro.childMarkdownRemark.html,
+          }}
+        />
         <h1>{what.title}</h1>
         <div
           className="intro"

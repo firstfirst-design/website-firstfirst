@@ -10,6 +10,7 @@ import SEO from "../components/seo"
 const WhoStyle = styled.div`
   .image {
     vertical-align: bottom;
+    margin-bottom: ${rhythm(4)};
   }
 
   @media (min-width: 992px) {

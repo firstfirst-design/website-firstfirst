@@ -10,11 +10,11 @@ import SectionLayout from "../components/layouts/section-layout"
 
 const BlogStyle = styled.div`
   .titleImage {
-    margin-bottom: ${rhythm(1)};
+    margin-bottom: ${rhythm(4)};
   }
 
   .postText {
-    margin-bottom: ${rhythm(1)};
+    margin-bottom: ${rhythm(4)};
   }
 
   @media (min-width: 992px) {
@@ -35,7 +35,7 @@ const BlogStyle = styled.div`
     .postText {
       width: 50%;
       padding-right: ${rhythm(1)};
-      margin-bottom: ${rhythm(2)};
+      margin-bottom: ${rhythm(4)};
     }
   }
 `

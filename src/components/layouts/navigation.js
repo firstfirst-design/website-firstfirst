@@ -34,6 +34,9 @@ export default function Navigation() {
 
   return (
     <NavigationStyle>
+      <Link to="/" activeClassName="active">
+        <h3>home</h3>
+      </Link>
       <Link to={`/${data.contentfulWho.slug}`} activeClassName="active">
         <h3>{data.contentfulWho.title}</h3>
       </Link>

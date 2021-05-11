@@ -23,7 +23,7 @@ const ProjectsStyle = styled.div`
   }
 
   .text {
-    margin-bottom: ${rhythm(1)};
+    margin-bottom: ${rhythm(4)};
   }
 
   .links {
