@@ -45,9 +45,14 @@ export const query = graphql`
       title
       description
       image {
-        fluid {
-          srcWebp
-        }
+        gatsbyImageData(
+          layout: CONSTRAINED
+          placeholder: BLURRED
+          formats: [AUTO, WEBP]
+          quality: 100
+          width: 1500
+        )
+        description
       }
       slug
     }
