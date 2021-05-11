@@ -1,127 +1,75 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
+import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            keywords
-            siteUrl
+const SEO = ({ title, description, image, slug }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+          description
+          siteUrl
+          favicon {
+            svg
           }
         }
       }
-    `
-  )
-  const metaDescription = description || site.siteMetadata.description
-  const image =
-    metaImage && metaImage.src
-      ? `${site.siteMetadata.siteUrl}${metaImage.src}`
-      : null
-  const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null
+      allContentfulAsset(
+        filter: {
+          file: { fileName: { eq: "sky-arrow-rocket-sculpture-moscow.jpg" } }
+        }
+      ) {
+        nodes {
+          fluid {
+            srcWebp
+          }
+        }
+      }
+    }
+  `)
 
   return (
     <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      link={
-        canonical
-          ? [
-              {
-                rel: "canonical",
-                href: canonical,
-              },
-            ]
-          : []
-      }
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          name: "keywords",
-          content: site.siteMetadata.keywords,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ]
-        .concat(
-          metaImage
-            ? [
-                {
-                  property: "og:image",
-                  content: image,
-                },
-                {
-                  property: "og:image:width",
-                  content: metaImage.width,
-                },
-                {
-                  property: "og:image:height",
-                  content: metaImage.height,
-                },
-                {
-                  name: "twitter:card",
-                  content: "summary_large_image",
-                },
-              ]
-            : [
-                {
-                  name: "twitter:card",
-                  content: "summary",
-                },
-              ]
-        )
-        .concat(meta)}
-    />
+      htmlAttributes={{ lang: `en` }}
+      titleTemplate={`%s | ${data.site.siteMetadata.title}`}
+    >
+      <title>{title}</title>
+      <meta
+        name="description"
+        content={description || data.site.siteMetadata.description}
+      />
+      <link rel="canonical" href={`${data.site.siteMetadata.siteUrl}${slug}`} />
+      <link rel="shortcut icon" href={data.site.siteMetadata.favicon.svg} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@rudolf__hans" />
+      <meta name="og:title" content={title} />
+      <meta
+        name="og:description"
+        content={description || data.site.siteMetadata.description}
+      />
+      <meta
+        name="og:image"
+        content={`${data.site.siteMetadata.siteUrl}${
+          image || data.allContentfulAsset.nodes.fluid
+        }`}
+      />
+      <meta name="og:type" content="website" />
+      <meta
+        name="og:url"
+        content={`${data.site.siteMetadata.siteUrl}/${slug}`}
+      />
+      <meta name="og:site_name" content={data.site.siteMetadata.title} />
+    </Helmet>
   )
 }
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-}
+
 SEO.propTypes = {
+  title: PropTypes.string,
   description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
-  image: PropTypes.shape({
-    src: PropTypes.string.isRequired,
-    height: PropTypes.number.isRequired,
-    width: PropTypes.number.isRequired,
-  }),
-  pathname: PropTypes.string,
+  image: PropTypes.string,
+  slug: PropTypes.string,
 }
+
 export default SEO

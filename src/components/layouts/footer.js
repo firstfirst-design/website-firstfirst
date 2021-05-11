@@ -19,9 +19,15 @@ const FooterStyle = styled.div`
     text-align: left !important;
   }
 
+  .socialMedia {
+    flex: 1;
+    margin-right: ${rhythm(2)};
+  }
+
   .copyright {
     flex: 1;
     text-align: right;
+    margin-left: ${rhythm(2)};
   }
 
   @media (min-width: 992px) {
@@ -67,7 +73,9 @@ const Footer = () => {
         alt={footer.image.description}
         content={
           <div className="backgroundImageContainer">
-            <SocialMedia />
+            <div className="socialMedia">
+              <SocialMedia />
+            </div>
             <div className="copyright">
               {new Date().getFullYear()}
               {data.contentfulFooter.text}
