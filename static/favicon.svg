@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 19.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-<font horiz-adv-x="1000">
-<!-- Copyright 1992, 1994, 1997, 2000, 2004 Adobe Systems Incorporated. All rights reserved. Myriad is either a registered trademark or a trademark of Adobe Systems Incorporated in the United States and/or other countries. -->
-<font-face font-family="MyriadPro-Regular" units-per-em="1000" underline-position="-100" underline-thickness="50"/>
-<missing-glyph horiz-adv-x="500" d="M0,0l500,0l0,700l-500,0M250,395l-170,255l340,0M280,350l170,255l0,-510M80,50l170,255l170,-255M50,605l170,-255l-170,-255z"/>
-<glyph unicode="F" horiz-adv-x="487" d="M76,0l87,0l0,305l255,0l0,72l-255,0l0,224l276,0l0,73l-363,0z"/>
-<glyph unicode="I" horiz-adv-x="239" d="M76,674l0,-674l87,0l0,674z"/>
-<glyph unicode="R" horiz-adv-x="538" d="M76,0l87,0l0,292l82,0C324,289 360,254 380,161C399,77 414,19 425,0l90,0C501,26 485,91 463,185C447,255 416,303 364,321l0,3C435,348 491,407 491,496C491,548 472,594 438,624C396,662 336,679 243,679C183,679 120,674 76,665M163,604C177,608 207,612 249,612C341,611 404,573 404,486C404,409 345,358 252,358l-89,0z"/>
-<glyph unicode="S" horiz-adv-x="493" d="M42,33C78,9 149,-10 214,-10C373,-10 450,80 450,184C450,283 392,338 278,382C185,418 144,449 144,512C144,558 179,613 271,613C332,613 377,593 399,581l24,71C393,669 343,685 274,685C143,685 56,607 56,502C56,407 124,350 234,311C325,276 361,240 361,177C361,109 309,62 220,62C160,62 103,82 64,106z"/>
-<glyph unicode="T" horiz-adv-x="497" d="M204,0l88,0l0,600l206,0l0,74l-499,0l0,-74l205,0z"/>
-<glyph unicode=" " horiz-adv-x="212"/>
-</font>
-
-	<text transform="matrix(1 0 0 1 -7.2856 205.5712)"><tspan x="0" y="0" style="font-family:'MyriadPro-Regular'; font-size:225px;">FIRST </tspan><tspan x="0" y="270" style="font-family:'MyriadPro-Regular'; font-size:225px;">FIRST</tspan></text>
+	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FF0000;}
+	.st1{fill:#FFFFFF;}
+</style>
+<circle class="st0" cx="16" cy="16" r="16"/>
+<g>
+	<path class="st1" d="M21.9,6.9v18.3h-4.4v-7.4h-5.6v-3.5h5.6v-3.8h-7.4V6.9H21.9z"/>
+</g>
 </svg>

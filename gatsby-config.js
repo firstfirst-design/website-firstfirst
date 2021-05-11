@@ -16,11 +16,13 @@ module.exports = {
 
   siteMetadata: {
     title: "First First",
-    description: "This is my starter template for Gatsby V3",
-    url: "https://firstfirst.design/",
+    description:
+      "First First is a creative studio based in Berlin. We are full of ideas and love developing things.",
+    siteUrl: "https://firstfirst.design/",
     favicon: {
       svg: `static/favicon.svg`,
     },
+    keywords: "product design, cad, web development",
   },
 
   plugins: [

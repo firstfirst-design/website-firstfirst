@@ -1,57 +1,127 @@
 import React from "react"
+import PropTypes from "prop-types"
+import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
-import Helmet from "react-helmet"
 
-/*MORE INFO: https://www.iamtimsmith.com/blog/creating-a-better-seo-component-for-gatsby */
-
-const SEO = props => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-          description
-          url
-          favicon {
-            svg
+function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+            description
+            keywords
+            siteUrl
           }
         }
       }
-    }
-  `)
-
-  const siteMetadata = data.site.siteMetadata
+    `
+  )
+  const metaDescription = description || site.siteMetadata.description
+  const image =
+    metaImage && metaImage.src
+      ? `${site.siteMetadata.siteUrl}${metaImage.src}`
+      : null
+  const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null
 
   return (
     <Helmet
-      htmlAttributes={{ lang: `en` }}
-      titleTemplate={`%s | ${siteMetadata.title}`}
-    >
-      <title>{props.title}</title>
-      <meta
-        name="description"
-        content={props.description || siteMetadata.description}
-      />
-      <link rel="canonical" href={`${siteMetadata.url}${props.slug}`} />
-      <link rel="shortcut icon" href={siteMetadata.favicon.svg} />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@rudolf__hans" />
-      <meta name="og:title" content={props.title} />
-      <meta
-        name="og:description"
-        content={props.description || siteMetadata.description}
-      />
-      <meta
-        name="og:image"
-        content={`${siteMetadata.url}${
-          props.image || siteMetadata.favicon.svg
-        }`}
-      />
-      <meta name="og:type" content="website" />
-      <meta name="og:url" content={`${siteMetadata.url}/${props.slug}`} />
-      <meta name="og:site_name" content={siteMetadata.title} />
-    </Helmet>
+      htmlAttributes={{
+        lang,
+      }}
+      title={title}
+      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      link={
+        canonical
+          ? [
+              {
+                rel: "canonical",
+                href: canonical,
+              },
+            ]
+          : []
+      }
+      meta={[
+        {
+          name: `description`,
+          content: metaDescription,
+        },
+        {
+          name: "keywords",
+          content: site.siteMetadata.keywords,
+        },
+        {
+          property: `og:title`,
+          content: title,
+        },
+        {
+          property: `og:description`,
+          content: metaDescription,
+        },
+        {
+          property: `og:type`,
+          content: `website`,
+        },
+        {
+          name: `twitter:creator`,
+          content: site.siteMetadata.author,
+        },
+        {
+          name: `twitter:title`,
+          content: title,
+        },
+        {
+          name: `twitter:description`,
+          content: metaDescription,
+        },
+      ]
+        .concat(
+          metaImage
+            ? [
+                {
+                  property: "og:image",
+                  content: image,
+                },
+                {
+                  property: "og:image:width",
+                  content: metaImage.width,
+                },
+                {
+                  property: "og:image:height",
+                  content: metaImage.height,
+                },
+                {
+                  name: "twitter:card",
+                  content: "summary_large_image",
+                },
+              ]
+            : [
+                {
+                  name: "twitter:card",
+                  content: "summary",
+                },
+              ]
+        )
+        .concat(meta)}
+    />
   )
 }
-
+SEO.defaultProps = {
+  lang: `en`,
+  meta: [],
+  description: ``,
+}
+SEO.propTypes = {
+  description: PropTypes.string,
+  lang: PropTypes.string,
+  meta: PropTypes.arrayOf(PropTypes.object),
+  title: PropTypes.string.isRequired,
+  image: PropTypes.shape({
+    src: PropTypes.string.isRequired,
+    height: PropTypes.number.isRequired,
+    width: PropTypes.number.isRequired,
+  }),
+  pathname: PropTypes.string,
+}
 export default SEO
