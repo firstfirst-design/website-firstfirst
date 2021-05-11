@@ -46,14 +46,14 @@ export default function Disclaimer({ data }) {
 
   return (
     <DisclaimerStyle>
+      <SEO
+        title={disclaimer.title}
+        description={disclaimer.description}
+        image={disclaimer.image}
+        slug={disclaimer.slug}
+      />
       <PageLayout>
         <SectionLayout>
-          <SEO
-            title={disclaimer.title}
-            description={disclaimer.description}
-            image={disclaimer.image}
-            slug={disclaimer.slug}
-          />
           <h1>{disclaimer.title}</h1>
           <div className="flexbox">
             <div
